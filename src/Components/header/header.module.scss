@@ -38,7 +38,7 @@
 .barraDeBusca{
     border: solid #fff;
     width: 20%;
-    height: 6vh;
+    height: 5vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -49,7 +49,9 @@
         background-color: transparent;
         border: none;
         width: 60%;
-        height: 5vh;
+        height: 3vh;
+        padding-top: 1%;
+    
 
         &::placeholder {
             color: #fff;
@@ -61,5 +63,21 @@
         background-color: transparent;
         border: none;
         cursor: pointer;
+    }
+}
+
+@media (max-width: 768px){
+    .header {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .logoHeader {
+        width: 90%;
+    }
+    .navHeader {
+        width: 95%;
+    }
+    .barraDeBusca {
+        display: none;
     }
 }
