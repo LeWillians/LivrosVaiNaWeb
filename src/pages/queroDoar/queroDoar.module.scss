@@ -54,6 +54,22 @@ input {
     cursor: pointer;
 }
 
+.mensagemSucesso {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+}
+
 @media (max-width: 780px) {
     .queroDoarSection {
         height: 100vh;

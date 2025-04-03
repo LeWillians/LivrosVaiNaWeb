@@ -3,52 +3,72 @@ import s from './queroDoar.module.scss'
 import { useState } from 'react'
 import axios from 'axios'
 
-export default function QueroDoar(){
+export default function QueroDoar() {
 
-    const [titulo,setTitulo] = useState("")
-    const [categoria,setCategoria] = useState("")
-    const [autor,setAutor] = useState("")
-    const [image_url,setImage_url] = useState("")
+    const [titulo, setTitulo] = useState("")
+    const [categoria, setCategoria] = useState("")
+    const [autor, setAutor] = useState("")
+    const [image_url, setImage_url] = useState("")
+    const [mensagemSucesso, setMensagemSucesso] = useState(false)
 
-    const capturaTitulo = (e) =>{
+    const capturaTitulo = (e) => {
         setTitulo(e.target.value)
     }
 
-    const capturaCategoria = (e) =>{
+    const capturaCategoria = (e) => {
         setCategoria(e.target.value)
     }
 
-    const capturaAutor = (e) =>{
+    const capturaAutor = (e) => {
         setAutor(e.target.value)
     }
 
-    const capturaImg = (e) =>{
-        capturaImage_url(e.target.valeu)
+    const capturaImg = (e) => {
+        setImage_url(e.target.value)
     }
 
-    const envioDados = async() =>{
-
+    const envioDados = async () => {
         const dadosParaEnviar = {
             titulo,
             categoria,
             autor,
             image_url
         }
-        await axios.post("https://api-3gad.onrender.com", dadosParaEnviar)
+
+        console.log(dadosParaEnviar)
+        await axios.post("https://api-3gad.onrender.com/doar", dadosParaEnviar)
+
+        // Exibir a mensagem de sucesso
+        setMensagemSucesso(true)
+
+        // Esconder a mensagem após 3 segundos
+        setTimeout(() => {
+            setMensagemSucesso(false)
+        }, 3000)
+
+        // Limpar os campos do formulário
+        setTitulo("")
+        setCategoria("")
+        setAutor("")
+        setImage_url("")
     }
 
-    return(
+    return (
         <section className={s.queroDoarSection}>
             <p>Por favor, preencha o formulário com suas informações e as informações do Livro</p>
-            <form onSubmit={(e)=>e.preventDefault()}>
+
+            {/* Exibir mensagem de sucesso se for true */}
+            {mensagemSucesso && <div className={s.mensagemSucesso}>📚 Livro cadastrado com sucesso! ✅</div>}
+
+            <form onSubmit={(e) => e.preventDefault()}>
                 <div>
                     <img src={iconeLivro} alt="Imagem com icone de livro aberto com borda azul" />
                     <h2>Informações do Livro</h2>
                 </div>
-                <input type="text" placeholder='Título' onChange={capturaTitulo}/>
-                <input type="text" placeholder='Categoria'onChance={capturaCategoria}/>
-                <input type="text" placeholder='Autor'onChance={capturaAutor}/>
-                <input type="text" placeholder='Link da Imagem' onChance={capturaImg}/>
+                <input type="text" placeholder='Título' value={titulo} onChange={capturaTitulo} required />
+                <input type="text" placeholder='Categoria' value={categoria} onChange={capturaCategoria} required />
+                <input type="text" placeholder='Autor' value={autor} onChange={capturaAutor} required />
+                <input type="url" placeholder='Link da Imagem' value={image_url} onChange={capturaImg} required />
                 <button className={s.buttonDoar} onClick={envioDados}>Doar</button>
             </form>
         </section>

@@ -1,32 +1,43 @@
 .livrosDoadosSection {
-    height: 70vh;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    padding: 20px;
 
     h2 {
         font-size: 32px;
+        text-align: center;
     }
 }
 
-.containerCards {
+.containerCards{
     width: 95%;
-    height: 60vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+    img{
+        width: 10vw;
+    }
 
     section {
         border: solid 3px #005695;
-        width: 18%;
+        width: 45%;
+        max-width: 300px;
         height: 40vh;
         border-radius: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
+        padding: 20px;
+        box-sizing: border-box;
 
         div {
             text-align: center;
-            line-height: 3vh;
         }
     }
 }
@@ -34,11 +45,16 @@
 @media (max-width: 780px) {
     .containerCards {
         display: flex;
-        flex-direction: column;
         align-items: center;
+        flex-wrap: wrap;
         
         section {
-            width: 60%;
+            width: 45%;
+        }
+
+        img {
+            width: 20vw;
         }
     }
+
 }
