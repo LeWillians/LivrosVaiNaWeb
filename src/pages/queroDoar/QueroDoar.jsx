@@ -38,15 +38,12 @@ export default function QueroDoar() {
         console.log(dadosParaEnviar)
         await axios.post("https://api-3gad.onrender.com/doar", dadosParaEnviar)
 
-        // Exibir a mensagem de sucesso
         setMensagemSucesso(true)
 
-        // Esconder a mensagem após 3 segundos
         setTimeout(() => {
             setMensagemSucesso(false)
         }, 3000)
 
-        // Limpar os campos do formulário
         setTitulo("")
         setCategoria("")
         setAutor("")
