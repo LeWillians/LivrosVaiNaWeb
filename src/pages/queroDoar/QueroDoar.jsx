@@ -54,7 +54,6 @@ export default function QueroDoar() {
         <section className={s.queroDoarSection}>
             <p>Por favor, preencha o formulário com suas informações e as informações do Livro</p>
 
-            {/* Exibir mensagem de sucesso se for true */}
             {mensagemSucesso && <div className={s.mensagemSucesso}>📚 Livro cadastrado com sucesso! ✅</div>}
 
             <form onSubmit={(e) => e.preventDefault()}>
